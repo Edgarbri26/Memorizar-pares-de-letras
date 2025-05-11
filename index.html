@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Triner BLD</title>
+
+
+</head>
+<body>
+
+  <h1>Memoriza Pares de Letras</h1>
+
+  <div id="setup">
+    <label>Cantidad de pares de letras:</label>
+    <input type="number" id="pairCount" min="1" value="5" ><br>
+    <label>Tiempo para memorizar (segundos):</label>
+    <input type="number" id="timeLimit" min="1" value="10" ><br>
+    <label>Letras omitidas (ej. ÑKWZ etc):</label>
+    <input type="text" id="omitLetters" placeholder="Ej: ÑK (las letras sin ',')" ><br>
+    <button type="button" onclick="startTest()">Iniciar</button>
+  </div>
+
+  <div id="memorizePhase" class="hidden">
+    <div id="letterPairs"></div>
+    <div id="timer"></div>
+    <button type="button" onclick="endMemorizationEarly()">Terminar antes</button>
+  </div>
+
+  <div id="inputPhase" class="hidden">
+    <p>Escribe los pares que recuerdas (uno por línea):</p>
+    <textarea id="userInput"></textarea>
+    <button type="button" onclick="checkAnswers()">Verificar</button>
+  </div>
+
+  <div id="results" class="hidden"></div>
+
+  <!-- Sonidos -->
+  <audio id="tickSound" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" preload="auto"></audio>
+  <audio id="urgentSound" src="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg" preload="auto"></audio>
+
+  <script src="index.js" ></script>
+
+</body>
+</html>
