@@ -43,5 +43,5 @@ function again() {
 }
 
 function resetApp() {
-    window.location.href = "./index.html";
+    window.location.href = ".index.html";
 }
