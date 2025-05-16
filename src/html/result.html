@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/css/styles.css">
     <title>Document</title>
 </head>
 <body>
     <div id="inputPhase">
-        <p>Escribe los pares que recuerdas (uno por línea):</p>
-        <textarea id="userInput" placeholder="hf \n jk " ></textarea>
-        <button type="button" class="button" onclick="checkAnswers()">Verificar</button>
+        <p>Escribe los pares que recuerdas <strong>(por línea o dejando espacios)</strong> :</p>
+        <textarea id="userInput" class="input" placeholder="hf jk " ></textarea>
+        <button type="button"  class="button" onclick="checkAnswers()">Verificar</button>
+
     </div>
 
     <div id="results" class="hidden"></div>
+
+    <script src="/src/js/result.js"></script>
 </body>
 </html>
