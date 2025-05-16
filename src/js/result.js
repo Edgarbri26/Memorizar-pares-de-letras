@@ -39,9 +39,9 @@ function checkAnswers() {
 }
 
 function again() {
-    window.location.href = "/src/html/memo.html";
+    window.location.href = "src/html/memo.html";
 }
 
 function resetApp() {
-    window.location.href = "/index.html";
+    window.location.href = "index.html";
 }
