@@ -76,5 +76,5 @@ function finishMemorization() {
 
 function moveToInputPhase() {
     localStorage.setItem("memo-time", time - remaining);
-    window.location.href = "src/html/result.html";
+    window.location.href = "/src/html/result.html";
 }
