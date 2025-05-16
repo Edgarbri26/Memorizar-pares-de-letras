@@ -39,7 +39,7 @@ function checkAnswers() {
 }
 
 function again() {
-    window.location.href = "/src/html/memo.html";
+    window.location.href = "../html/memo.html";
 }
 
 function resetApp() {
