@@ -5,18 +5,23 @@ let generatedPairs = [];
 let time; // Tiempo en segundos
 
 
-function generateLetterPairs(count, omitted) {
+function generateLetterPairs(count, omitted, omittedPair) {
     const baseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      //omitimos las letras que el usuario no quiere
+        //omitimos las letras que el usuario no quiere
     const allowed = baseLetters.split("").filter(l => !omitted.includes(l));
     const pairs = new Set();
+    //const omittedPairSet = new Set(omittedPair);
+    let invertedPairs = omittedPair.map(omittedPair => omittedPair.split("").reverse().join(""));
+    console.log(omittedPair);
+    console.log(invertedPairs);
 
       //aqui generamos las combinaciones de letras
     while (pairs.size < count) {
         const a = allowed[Math.floor(Math.random() * allowed.length)];
         const b = allowed[Math.floor(Math.random() * allowed.length)];
-        if (a !== b) {
-            pairs.add(a + b);
+
+        if (a !== b && !pairs.has(b + a) && !omittedPair.includes(a + b) && !omittedPair.includes(b + a) ) {
+            pairs.add(a + b);  
         }
     }
 
@@ -24,12 +29,13 @@ function generateLetterPairs(count, omitted) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const omitted =localStorage.getItem("omitted");
+    const omitted = localStorage.getItem("omitted");
+    const omittedPair = JSON.parse(localStorage.getItem("omittedPairs"));
     time = localStorage.getItem("time");
     remaining = time;
     const count = localStorage.getItem("count");
 
-    generatedPairs = generateLetterPairs(count, omitted);
+    generatedPairs = generateLetterPairs(count, omitted, omittedPair);
     localStorage.setItem("pares", JSON.stringify(generatedPairs));
     //muestra los pares generados
     const letterPairsDisplay = document.getElementById("letterPairs");
