@@ -53,7 +53,6 @@ function initMemo(){
 
     countdownInterval = setInterval(() => {
         remaining --;
-        console.log(remaining);
         timerDisplay.textContent = `Tiempo restante: ${remaining} segundos`;
 
         if (remaining <= 5) {

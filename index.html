@@ -10,21 +10,34 @@
 
 </head>
 <body>
-  <header>
-    <h1>Memoriza Pares de Letras</h1>
-  </header>
 
-  <section id="setup" class="form" >
-    <label>Cantidad de pares de letras:</label>
-    <input class="input" type="number" id="pairCount" min="1" value="5" ><br>
-    <label>Tiempo para memorizar (segundos):</label>
-    <input class="input" type="number" id="timeLimit" min="1" value="10" ><br>
-    <label>Letras omitidas (ej. ÑKWZ etc):</label>
-    <input class="input" type="text" id="omitLetters" placeholder="Ej: ÑK (las letras sin ',')" ><br>
-    <label>Pares omitidos (Ej. ÑK WZ etc):</label>
-    <input class="input" type="text" id="omitPairs" placeholder="Ej: ÑK WZ (los pares separados con espacios)" ><br>
-    <button class="input" type="button" onclick="startTest()">Iniciar</button>
+
+  <section class="seccion">
+    <h1>Inicio</h1>
+    <div class="container">
+      <input class="input" type="number" id="pairCount" name="pairCount" min="1" value="5" >
+      <label for="pairCount" class="label">Cantidad de pares de letras:</label>
+    </div>
+
+    <div class="container">
+      <input class="input" type="number" id="timeLimit" min="1" value="10" >
+      <label class="label" >Tiempo para la memo(segundos):</label>
+    </div>
+
+    <div class="container">
+      <input class="input" type="text" id="omitLetters" placeholder="Ej: ÑK (las letras sin ',')" >
+      <label class="label" >Letras omitidas (ej. ÑKWZ etc):</label>
+    </div>
+
+    <div class="container">
+      <input class="input" type="text" id="omitPairs" placeholder="Ej: ÑK WZ (los pares separados con espacios)" >
+      <label>Pares omitidos (Ej. ÑK WZ etc):</label>
+    </div>
+
+    <button class="button-confirm" type="submit" onclick="startTest()">Iniciar</button>
+
   </section>
+
 
   <script  src="src/js/start.js" ></script>
 

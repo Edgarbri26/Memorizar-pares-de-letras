@@ -7,14 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="inputPhase">
-        <p>Escribe los pares que recuerdas <strong>(por línea o dejando espacios)</strong> :</p>
-        <textarea id="userInput" class="input" placeholder="hf jk " ></textarea>
+    <section class="seccion" id="inputPhase">
+        <p>Escribe los pares que recuerdas <strong>(dejando espacios)</strong> :</p>
+        <input type="text" id="userInput" class="input" placeholder="ej: hf jk " autocomplete="off">
         <button type="button"  class="button" onclick="checkAnswers()">Verificar</button>
+    </section>
 
-    </div>
-
-    <div id="results" class="hidden"></div>
+    <section id="results" class="seccion hidden"></section>
 
     <script src="../js/result.js"></script>
 </body>

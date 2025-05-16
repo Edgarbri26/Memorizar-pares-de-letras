@@ -27,12 +27,15 @@ function checkAnswers() {
 
     document.getElementById("results").innerHTML = /*html*/`
         <h2>Resultados</h2>
-        <p>Tiempo de memorización: ${memoTime} segundos</p>
-        <p>Pares correctos: ${correct} de ${generatedPairs.length}</p>
-        <p>Has escrito: ${userPairs.join(", ")}</p>
-        <p>Originales: ${generatedPairs.join(", ")}</p>
-        <button onclick="resetApp()" class="button" >Inicio</button>
-        <button onclick="again()" class="button" >Otra vez</button>`;
+        <p><strong>Tiempo de memorización:</strong> ${memoTime}s</p>
+        <p><strong>Pares correctos:</strong> ${correct} de ${generatedPairs.length}</p>
+        <p><strong>Has escrito:</strong>${userPairs.join(", ")}</p>
+        <p><strong>Originales:</strong> ${generatedPairs.join(", ")}</p>
+        <div>
+            <button onclick="resetApp()" class="button" >Inicio</button>
+            <button onclick="again()" class="button" >Otra vez</button>
+        </div>`
+        ;
 
     document.getElementById("results").classList.remove("hidden");
     document.getElementById("inputPhase").classList.add("hidden");
