@@ -11,5 +11,5 @@ function startTest() {
     localStorage.setItem("count", count);
     localStorage.setItem("time", time);
 
-    window.location.href = "../html/memo.html";
+    window.location.href = "./src/html/memo.html";
 }
