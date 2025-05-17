@@ -13,8 +13,28 @@
         <button type="button"  class="button" onclick="checkAnswers()">Verificar</button>
     </section>
 
-    <section id="results" class="seccion hidden"></section>
+
+    <div id="capture">
+        <section id="section-results"  class="seccion hidden">
+            <article >
+                <h2>Resultados</h2>
+                <div class="results" id="results">
+
+                </div>
+                <div>
+                    <button type="button" onclick="resetApp()" class="button" >Inicio</button>
+                    <button type="button" onclick="compartirEnWhatsapp()" class="button" >Compartir</button>
+                    <button type="button" onclick="again()" class="button" >Otra vez</button>
+                </div>
+                <div id="result"></div>
+            </article>
+        </section>
+    </div>
+
 
     <script src="../js/result.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+
 </body>
 </html>

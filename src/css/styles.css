@@ -23,7 +23,8 @@ body {
 }
 
 .seccion {
-  width: 80%;
+  width: auto;
+  height: auto;
   padding: 20px;
   background: lightblue;
   display: flex;
@@ -38,6 +39,9 @@ body {
   right: 0;
   top: 0;
   bottom: 0;
+}
+#capture{
+  margin: 10px;
 }
 h1 {
   color: var(--font-color);
