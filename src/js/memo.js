@@ -3,6 +3,8 @@ let timeoutId;
 let remaining; // Tiempo en segundos
 let generatedPairs = [];
 let time; // Tiempo en segundos
+let ultimoPar = "";
+let penultimoPar = "";
 
 
 function generateLetterPairs(count, omitted, omittedPair) {
@@ -20,7 +22,9 @@ function generateLetterPairs(count, omitted, omittedPair) {
         const a = allowed[Math.floor(Math.random() * allowed.length)];
         const b = allowed[Math.floor(Math.random() * allowed.length)];
 
-        if (a !== b && !pairs.has(b + a) && !omittedPair.includes(a + b) && !omittedPair.includes(b + a) ) {
+        if (a !== b && !pairs.has(b + a) && !omittedPair.includes(a + b) && !omittedPair.includes(b + a) && !ultimoPar.includes(a) && !ultimoPar.includes(b) && !penultimoPar.includes(a) && !penultimoPar.includes(b) ) {
+            penultimoPar = ultimoPar;
+            ultimoPar = a + b;
             pairs.add(a + b);  
         }
     }
