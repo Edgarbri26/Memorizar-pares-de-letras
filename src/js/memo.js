@@ -3,7 +3,7 @@ let timeoutId;
 let remaining; // Tiempo en segundos
 let generatedPairs = [];
 let time; // Tiempo en segundos
-let ultimoPar = "";
+let ultimoPar = [];
 let penultimoPar = "";
 
 
@@ -14,17 +14,17 @@ function generateLetterPairs(count, omitted, omittedPair) {
     const pairs = new Set();
     //const omittedPairSet = new Set(omittedPair);
     let invertedPairs = omittedPair.map(omittedPair => omittedPair.split("").reverse().join(""));
-    console.log(omittedPair);
-    console.log(invertedPairs);
+    //console.log(omittedPair);
+    //console.log(invertedPairs);
 
       //aqui generamos las combinaciones de letras
     while (pairs.size < count) {
         const a = allowed[Math.floor(Math.random() * allowed.length)];
         const b = allowed[Math.floor(Math.random() * allowed.length)];
 
-        if (a !== b && !pairs.has(b + a) && !omittedPair.includes(a + b) && !omittedPair.includes(b + a) && !ultimoPar.includes(a) && !ultimoPar.includes(b) && !penultimoPar.includes(a) && !penultimoPar.includes(b) ) {
-            penultimoPar = ultimoPar;
-            ultimoPar = a + b;
+        if (a !== b && !pairs.has(b + a) && !omittedPair.includes(a + b) && !omittedPair.includes(b + a) && !ultimoPar.includes(a) && !ultimoPar.includes(b)/* && !penultimoPar.includes(a) && !penultimoPar.includes(b)*/ && !invertedPairs.includes(a + b) && !invertedPairs.includes(b + a)) {
+            //penultimoPar = ultimoPar;
+            ultimoPar = [a, b];
             pairs.add(a + b);  
         }
     }
@@ -48,24 +48,30 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-function initMemo(){
+/*function initMemo(){
     const timerDisplay = document.getElementById("timer");
     const tickSound = document.getElementById("tickSound");
+    let segundos = time;
+    let milisegundos = 0;
 
-
-    timerDisplay.textContent = `Tiempo restante: ${remaining} segundos`;
+    timerDisplay.textContent = `Tiempo restante: ${segundos}. ${milisegundos} segundos`;
 
     countdownInterval = setInterval(() => {
-        remaining --;
-        timerDisplay.textContent = `Tiempo restante: ${remaining} segundos`;
+        
+        if (milisegundos <= 0) {
+            segundos--;
+            milisegundos = 10;
+        }
+        milisegundos --;
+        timerDisplay.textContent = `Tiempo restante: ${segundos}. ${milisegundos} segundos`;
 
-        if (remaining <= 5) {
+        if (segundos <= 5) {
             timerDisplay.classList.add("low-time");
-        }if (remaining == 5) {
+        }if (segundos == 5) {
             tickSound.play();
             }
 
-        if (remaining <= 0) {
+        if (segundos <= 0) {
             clearInterval(countdownInterval);
         }
     }, 1000);
@@ -74,7 +80,38 @@ function initMemo(){
         moveToInputPhase();
     }, time * 1000);
 
+}*/
+
+function initMemo() {
+    const timerDisplay = document.getElementById("timer");
+    const tickSound = document.getElementById("tickSound");
+
+    let totalMilliseconds = time * 100;
+
+    countdownInterval = setInterval(() => {
+        totalMilliseconds -= 1; // Decremento de 10ms por ciclo (~100fps)
+
+        // Calcular segundos y milisegundos restantes
+        let segundos = Math.floor(totalMilliseconds / 100);
+        let milisegundos = totalMilliseconds % 100;
+
+        // Formato fijo de 3 dígitos para ms (ej. 090, 005)
+        timerDisplay.textContent = `Tiempo restante: ${segundos}.${milisegundos.toString().padStart(2, '0')} segundos`;
+
+        if (segundos === 5 && milisegundos >= 90 && milisegundos <= 99) {
+            tickSound.play();
+            timerDisplay.classList.add("low-time");
+        }
+
+  
+        if (totalMilliseconds <= 0) {
+            clearInterval(countdownInterval);
+            timerDisplay.textContent = `¡Tiempo terminado!`;
+            moveToInputPhase();
+        }
+    }, 10); // Cada 10ms (centésima de segundo)
 }
+
 
 function finishMemorization() {
     clearInterval(countdownInterval);
