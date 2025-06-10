@@ -80,6 +80,6 @@ function finishMemorization() {
 }
 
 function moveToInputPhase() {
-    localStorage.setItem("memo-time", time - remaining.toFixed(2));
+    localStorage.setItem("memo-time", (time - remaining).toFixed(2));
     window.location.href = "../html/result.html";
 }
