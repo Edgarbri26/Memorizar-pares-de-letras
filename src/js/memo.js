@@ -4,7 +4,6 @@ let remaining; // Tiempo en segundos
 let generatedPairs = [];
 let time; // Tiempo en segundos
 let ultimoPar = [];
-let penultimoPar = "";
 
 
 function generateLetterPairs(count, omitted, omittedPair) {
@@ -22,7 +21,7 @@ function generateLetterPairs(count, omitted, omittedPair) {
         const a = allowed[Math.floor(Math.random() * allowed.length)];
         const b = allowed[Math.floor(Math.random() * allowed.length)];
 
-        if (a !== b && !pairs.has(b + a) && !omittedPair.includes(a + b) && !omittedPair.includes(b + a) && !ultimoPar.includes(a) && !ultimoPar.includes(b)/* && !penultimoPar.includes(a) && !penultimoPar.includes(b)*/ && !invertedPairs.includes(a + b) && !invertedPairs.includes(b + a)) {
+        if (a !== b && !pairs.has(b + a) && !omittedPair.includes(a + b) && !omittedPair.includes(b + a) && !ultimoPar.includes(a) && !ultimoPar.includes(b) && !invertedPairs.includes(a + b) && !invertedPairs.includes(b + a)) {
             //penultimoPar = ultimoPar;
             ultimoPar = [a, b];
             pairs.add(a + b);  
@@ -47,40 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
     initMemo();
 });
 
-
-/*function initMemo(){
-    const timerDisplay = document.getElementById("timer");
-    const tickSound = document.getElementById("tickSound");
-    let segundos = time;
-    let milisegundos = 0;
-
-    timerDisplay.textContent = `Tiempo restante: ${segundos}. ${milisegundos} segundos`;
-
-    countdownInterval = setInterval(() => {
-        
-        if (milisegundos <= 0) {
-            segundos--;
-            milisegundos = 10;
-        }
-        milisegundos --;
-        timerDisplay.textContent = `Tiempo restante: ${segundos}. ${milisegundos} segundos`;
-
-        if (segundos <= 5) {
-            timerDisplay.classList.add("low-time");
-        }if (segundos == 5) {
-            tickSound.play();
-            }
-
-        if (segundos <= 0) {
-            clearInterval(countdownInterval);
-        }
-    }, 1000);
-
-    timeoutId = setTimeout(() => {
-        moveToInputPhase();
-    }, time * 1000);
-
-}*/
 
 function initMemo() {
     const timerDisplay = document.getElementById("timer");
