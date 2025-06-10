@@ -26,7 +26,7 @@ body {
   width: auto;
   height: auto;
   padding: 20px;
-  /*background: lightblue;*/
+  background: #4a90e2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -64,7 +64,7 @@ h1 {
   margin: 20px;
   margin-bottom: 50;
   font-weight: bold;
-  color: #052aff;
+  color: var(--bg-color);
 }
 
 .input {
@@ -89,8 +89,7 @@ h1 {
 }
 
 #timer.low-time {
-  color: red;
-  font-weight: bold;
+  color: rgba(255, 0, 0, 0.267);
 }
 
     /*boton*/

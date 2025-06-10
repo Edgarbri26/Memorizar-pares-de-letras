@@ -65,8 +65,8 @@ function initMemo(){
             tickSound.play();
             }
 
-        if (remaining <= 0) {
-            clearInterval(countdownInterval);
+        if (remaining <= 0.01) {
+            finishMemorization();
         }
     }, 10);
 }
