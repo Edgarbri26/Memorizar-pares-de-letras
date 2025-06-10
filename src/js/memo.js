@@ -4,6 +4,8 @@ let remaining; // Tiempo en segundos
 let generatedPairs = [];
 let time; // Tiempo en segundos
 let ultimoPar = [];
+let segundos;
+let milisegundos;
 
 
 function generateLetterPairs(count, omitted, omittedPair) {
@@ -46,35 +48,27 @@ document.addEventListener("DOMContentLoaded", () => {
     initMemo();
 });
 
-
-function initMemo() {
+function initMemo(){
     const timerDisplay = document.getElementById("timer");
     const tickSound = document.getElementById("tickSound");
 
-    let totalMilliseconds = time * 100;
+
+    timerDisplay.textContent = `Tiempo restante: ${remaining} segundos`;
 
     countdownInterval = setInterval(() => {
-        totalMilliseconds -= 1; // Decremento de 10ms por ciclo (~100fps)
+        remaining -= 0.01; // Decremento de 0.01 segundos
+        timerDisplay.textContent = `Tiempo restante: ${remaining.toFixed(2)} segundos`;
 
-        // Calcular segundos y milisegundos restantes
-        let segundos = Math.floor(totalMilliseconds / 100);
-        let milisegundos = totalMilliseconds % 100;
-
-        // Formato fijo de 3 dígitos para ms (ej. 090, 005)
-        timerDisplay.textContent = `Tiempo restante: ${segundos}.${milisegundos.toString().padStart(2, '0')} segundos`;
-
-        if (segundos === 5 && milisegundos >= 90 && milisegundos <= 99) {
-            tickSound.play();
+        if (remaining <= 5) {
             timerDisplay.classList.add("low-time");
-        }
+        }if (remaining == 5) {
+            tickSound.play();
+            }
 
-  
-        if (totalMilliseconds <= 0) {
+        if (remaining <= 0) {
             clearInterval(countdownInterval);
-            timerDisplay.textContent = `¡Tiempo terminado!`;
-            moveToInputPhase();
         }
-    }, 10); // Cada 10ms (centésima de segundo)
+    }, 10);
 }
 
 
@@ -86,6 +80,6 @@ function finishMemorization() {
 }
 
 function moveToInputPhase() {
-    localStorage.setItem("memo-time", time - remaining);
+    localStorage.setItem("memo-time", time - remaining.toFixed(2));
     window.location.href = "../html/result.html";
 }

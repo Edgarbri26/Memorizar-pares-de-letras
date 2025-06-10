@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+
 function checkAnswers() {
     const userText = document.getElementById("userInput").value.trim().toUpperCase();
     const userPairs = userText.split(/\s+|\n/).filter(p => p.length === 2);
